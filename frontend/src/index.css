@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  scroll-behavior: smooth;
+}
+
+img {
+  scroll-behavior: smooth;
+}
+
+.font {
+  font-family: "Ysabeau", sans-serif;
+}
+
+.bg {
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(1, 0, 43, 1) 0%,
+    rgba(19, 19, 20, 1) 50%,
+    rgba(49, 5, 153, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(1, 0, 43, 1) 0%,
+    rgba(19, 19, 20, 1) 50%,
+    rgba(49, 5, 153, 1) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(
+    90deg,
+    rgba(1, 0, 43, 1) 0%,
+    rgba(19, 19, 20, 1) 50%,
+    rgba(49, 5, 153, 1) 100%
+  );
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#310599', endColorstr='#01002B', GradientType=0 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    90deg,
+    rgba(1, 0, 43, 1) 0%,
+    rgba(19, 19, 20, 1) 50%,
+    rgba(49, 5, 153, 1) 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(
+    90deg,
+    rgba(1, 0, 43, 1) 0%,
+    rgba(19, 19, 20, 1) 50%,
+    rgba(49, 5, 153, 1) 100%
+  );
+}
+
+.loader {
+  width: 200px;
+  height: 10px;
+  background: #004643;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.inner_loader {
+  width: 60%;
+  height: 100%;
+  background: #f9bc60;
+  border-radius: 50px;
+  animation: moveLeftRight 3s ease-in-out infinite;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(calc(-100% + 10px));
+  }
+
+  50% {
+    transform: translateX(calc(200px - 10px));
+  }
+
+  100% {
+    transform: translateX(calc(-100% + 10px));
+  }
+}
+
+.slider-container {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+
+.slider-item {
+  flex: 0 0 auto;
+  margin: 0 2px;
+  padding: 8px;
+  border: 1px solid black;
+  font-size: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.slider-item.active {
+  background-color: gray;
+}
+
+.bg_2 {
+  background: rgb(9, 94, 121);
+  background: linear-gradient(
+    90deg,
+    rgba(9, 94, 121, 1) 49%,
+    rgba(89, 0, 255, 1) 100%
+  );
+}
