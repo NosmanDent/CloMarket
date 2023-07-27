@@ -1,18 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  FaStore,
-  FaBlenderPhone,
-  FaCar,
-  FaBaby,
-  FaTools,
-} from "react-icons/fa";
-import { MdStyle, MdNoFood } from "react-icons/md";
-import {
-  GiHealthPotion,
-  GiHomeGarage,
-  GiBarStool,
-  GiTreehouse,
-} from "react-icons/gi";
+
 import { TbWorldUpload } from "react-icons/tb";
 // components
 import WorkoutDetails from "../components/WorkoutDetails";
@@ -70,10 +57,9 @@ const Store = () => {
     // Show loader component when loading is true
     <Loader />
   ) : (
-    // Your existing component content
-    <div className="flex flex-col items-center justify-center px-3 cursor-pointer">
+    <div className="flex flex-col items-center px-3 cursor-pointer">
       <div className="flex flex-col items-center justify-center font mt-10">
-        <h1 className="md:text-3xl text-2xl text-center font-bold flex flex-row items-center">
+        <div className="md:text-3xl text-2xl text-center font-bold flex flex-row items-center">
           Welcome to{" "}
           <span>
             <div className="flex flex-1 flex-row items-center  py-1 px-2 font">
@@ -89,148 +75,58 @@ const Store = () => {
               <TbWorldUpload className="text-xl md:text-4xl ml-1 text-black hidden md:flex" />
             </div>
           </span>
-        </h1>
+        </div>
         <h1 className="mb-10 text-center leading-tight text-xs md:text-sm">
           There are over 10,000+ product waiting for you
         </h1>
 
         <h1 className="text-2xl md:text-3xl font-bold mb-6">BUY NOW!</h1>
       </div>
-      <div className="flex flex-wrap gap-3 w-full items-center justify-center mb-10">
-        <div
-          className={`border ${
-            activeCategory === "all" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("all")}
-        >
-          All{" "}
-          <span>
-            <FaStore />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "fashion" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("fashion")}
-        >
-          Fashion{" "}
-          <span>
-            <MdStyle />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "phone" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("phone")}
-        >
+
+      <select
+        className="bg-stone-300 px-6 mx-20 mb-10 text-sm md:text-md  focus:outline-none border border-blue-700  text-black font-semibold w-full py-3"
+        value={activeCategory}
+        onChange={(e) => filterByCategory(e.target.value)}
+      >
+        <option value="all" className="bg-gray-400">
+          All
+        </option>
+        <option value="fashion" className="bg-gray-400">
+          Fashion
+        </option>
+        <option value="phone" className="bg-gray-400">
           Phone
-          <span>
-            <FaBlenderPhone />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "car" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("car")}
-        >
+        </option>
+        <option value="car" className="bg-gray-400">
           Vehicles
-          <span>
-            <FaCar />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "property" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("property")}
-        >
+        </option>
+        <option value="property" className="bg-gray-400">
           Property
-          <span>
-            <GiHomeGarage />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "health" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("health")}
-        >
+        </option>
+        <option value="health" className="bg-gray-400">
           Health and Beauty
-          <span>
-            <GiHealthPotion />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "outdoors" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("outdoors")}
-        >
+        </option>
+        <option value="outdoors" className="bg-gray-400">
           Outdoors
-          <span>
-            <GiHomeGarage />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "babies-kids" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("babies-kids")}
-        >
+        </option>
+        <option value="babies-kids" className="bg-gray-400">
           Babies & Kids
-          <span>
-            <FaBaby />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "agriculture-food" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("agriculture-food")}
-        >
+        </option>
+        <option value="agriculture-food" className="bg-gray-400">
           Agriculture & Food
-          <span>
-            <MdNoFood />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "home-appliance" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("home-appliance")}
-        >
+        </option>
+        <option value="home-appliance" className="bg-gray-400">
           Home Appliances
-          <span>
-            <GiTreehouse />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "repair-construction" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("repair-construction")}
-        >
+        </option>
+        <option value="repair-construction" className="bg-gray-400">
           Repair and Construction
-          <span>
-            <FaTools />
-          </span>
-        </div>
-        <div
-          className={`border ${
-            activeCategory === "commercial-tools" ? "bg-black" : "bg_2"
-          } border-[bg_2] md:px-6 md:py-4 px-3 py-2 text-sm md:text-text-md text-white font-semibold flex flex-col items-center justify-center`}
-          onClick={() => filterByCategory("commercial-tools")}
-        >
+        </option>
+        <option value="commercial-tools" className="bg-gray-400">
           Commercial Tools
-          <span>
-            <GiBarStool />
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-wrap gap-5 justify-center mb-20">
+        </option>
+      </select>
+
+      <div className="flex flex-wrap gap-5 items-center justify-center mb-20">
         {filteredMarkets && filteredMarkets.length > 0 ? (
           // Render the market details if there are filtered markets
           filteredMarkets.map((market) => (
